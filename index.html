@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Porch Rockers | Mom-Rock Live in Newton, MA</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #1E9642;
+      --purple: #6B21A8;
+      --yellow: #FFE135;
+      --black:  #111111;
+      --white:  #FFFFFF;
+      --coral:  #E03E3E;
+      --navy:   #0D1B2A;
+      --teal:   #0E7490;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 58px;
+    }
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      color: var(--yellow);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+
+    /* ── SHARED ──────────────────────────────────── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.55;
+      margin-bottom: 0.4rem;
+    }
+    h2.title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      line-height: 0.95;
+      margin-bottom: 1.4rem;
+    }
+    .lead {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    .btn-yellow { background: var(--yellow); color: var(--black); }
+    .btn-black  { background: var(--black);  color: var(--yellow); }
+    .btn-white  { background: var(--white);  color: var(--black); }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 58px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      width: 100%;
+    }
+    .hero-text { color: var(--white); }
+    .hero-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      line-height: 0.92;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span { color: var(--yellow); }
+    .hero-sub {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2.5rem;
+      max-width: 420px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .hero-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-logo-wrap img {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* ── ABOUT ───────────────────────────────────── */
+    .about { background: var(--green); color: var(--white); }
+    .about .eyebrow { color: rgba(255,255,255,0.55); }
+    .about h2.title { color: var(--yellow); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+    }
+    .about .lead { color: rgba(255,255,255,0.88); }
+    .about em { font-style: italic; color: var(--yellow); }
+
+    /* ── MUSIC ───────────────────────────────────── */
+    .music { background: var(--black); color: var(--white); }
+    .music .eyebrow { color: rgba(255,255,255,0.4); }
+    .music h2.title { color: var(--yellow); }
+    .music .lead { color: rgba(255,255,255,0.7); }
+
+    .artist-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+    .tag {
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .tg  { background: var(--green);  color: #fff; }
+    .tp  { background: var(--purple); color: #fff; }
+    .ty  { background: var(--yellow); color: var(--black); }
+    .tc  { background: var(--coral);  color: #fff; }
+    .tn  { background: #1a3a5c;       color: #fff; }
+    .tt  { background: var(--teal);   color: #fff; }
+
+    /* ── HIRE ────────────────────────────────────── */
+    .hire { background: var(--yellow); color: var(--black); }
+    .hire .eyebrow { color: rgba(0,0,0,0.45); }
+    .hire h2.title { color: var(--black); }
+
+    .hire-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .hire-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem 1.75rem;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.18);
+    }
+    .hire-card-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+    .hire-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.7rem;
+    }
+    .hire-card p { font-size: 0.95rem; line-height: 1.65; color: #444; }
+
+    .price-banner {
+      margin-top: 3.5rem;
+      background: var(--black);
+      color: var(--yellow);
+      border-radius: 8px;
+      padding: 1.8rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .price-banner-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      letter-spacing: 0.06em;
+      line-height: 1.3;
+    }
+    .price-banner-text span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: rgba(255,225,53,0.7);
+      margin-top: 0.2rem;
+    }
+
+    /* ── GALLERY ─────────────────────────────────── */
+    .gallery { background: var(--purple); color: var(--white); }
+    .gallery .eyebrow { color: rgba(255,255,255,0.45); }
+    .gallery h2.title { color: var(--yellow); }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 240px;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      z-index: 1;
+      position: relative;
+    }
+    .photo-grid .wide { grid-column: span 2; }
+    .photo-grid .tall { grid-row: span 2; }
+
+    /* ── VIDEOS ──────────────────────────────────── */
+    .videos { background: var(--navy); color: var(--white); }
+    .videos .eyebrow { color: rgba(255,255,255,0.4); }
+    .videos h2.title { color: var(--yellow); }
+    .videos .lead { color: rgba(255,255,255,0.7); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .video-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/9;
+    }
+    .video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 6rem 2rem 3rem;
+      text-align: center;
+    }
+    footer h2.title { color: var(--yellow); }
+    footer .lead { color: rgba(255,255,255,0.65); margin: 1.2rem auto 2.5rem; }
+    .footer-bottom {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── AUDIO SECTION ───────────────────────────── */
+    .audio-section {
+      background: var(--coral);
+      color: var(--white);
+      padding: 5rem 2rem;
+    }
+    .audio-section .eyebrow { color: rgba(255,255,255,0.55); }
+    .audio-section h2.title { color: var(--white); margin-bottom: 0.5rem; }
+    .audio-section .lead { color: rgba(255,255,255,0.85); margin-bottom: 3rem; }
+    .audio-player-wrap {
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 2.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .audio-note {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      font-style: italic;
+      margin-top: 1rem;
+    }
+    .audio-section audio {
+      flex: 1;
+      min-width: 260px;
+      height: 40px;
+      accent-color: var(--yellow);
+    }
+    .audio-section audio::-webkit-media-controls-panel { background: rgba(0,0,0,0.3); }
+    @media (max-width: 800px) {
+      .audio-player-wrap { flex-direction: column; align-items: stretch; }
+      .audio-section audio { width: 100%; }
+    }
+
+    /* ── CONTACT FORM ────────────────────────────── */
+    .contact-form {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 2.5rem 0 0;
+      text-align: left;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group-full { margin-bottom: 1.25rem; }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.15s, background 0.15s;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--yellow);
+      background: rgba(255,255,255,0.12);
+    }
+    .form-group select option { background: #222; color: white; }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .form-note {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+    .footer-also {
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-also a {
+      color: var(--yellow);
+      text-decoration: none;
+    }
+    .footer-also a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 800px) {
+      .hero-inner      { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub        { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-badges     { justify-content: center; }
+      .hero-logo-wrap  { order: -1; }
+      .hero-logo-wrap img { max-width: 300px; }
+      .about-grid      { grid-template-columns: 1fr; }
+      .hire-cards      { grid-template-columns: 1fr; }
+      .photo-grid      { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+      .photo-grid .wide{ grid-column: span 2; }
+      .photo-grid .tall{ grid-row: span 1; }
+      .video-grid      { grid-template-columns: 1fr; }
+      .price-banner    { flex-direction: column; text-align: center; }
+      .nav-links       { display: none; }
+      .form-row        { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">The Porch Rockers</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#hire">Hire Us</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#audio">Audio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-kicker">Newton, MA · Est. 2019</p>
+        <h1 class="hero-title">The<br><span>Porch</span><br>Rockers</h1>
+        <p class="hero-sub">
+          Two powerhouse vocalists, a kickin' rhythm section, and songs you know every single word to.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">🎵 Live Band</span>
+          <span class="badge">📍 Newton, MA</span>
+          <span class="badge">💰 Surprisingly Affordable</span>
+          <span class="badge">🎉 Available to Hire</span>
+        </div>
+        <a href="#hire" class="btn btn-yellow">Book Us for Your Next Event ↓</a>
+      </div>
+      <div class="hero-logo-wrap">
+        <img
+          src="media/Porch Rocker silhouettes and logo GREEn-01.png"
+          alt="The Porch Rockers"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="eyebrow">Who We Are</p>
+          <h2 class="title">We Play<br>Mom-Rock!</h2>
+          <p class="lead">
+            The Porch Rockers are Newton's premier (and, okay, <em>only</em>) mom-rock band. Featuring two powerhouse vocalists, a marriage of guitars, and a rhythm section that keeps the party going, we've been entertaining Newton crowds since 2019 at Hyde Playground, Newtonville Village Day, and Newton Porchfest.
+          </p>
+          <br>
+          <p class="lead">
+            We play the songs you loved in your car, your kitchen, your college dorm. Get ready to sing along, feel absolutely free to dance, and don't worry — nobody's judging you. We're all having too much fun.
+          </p>
+        </div>
+        <div class="about-photo">
+          <img
+            src="media/image_6487327(1).JPG"
+            alt="The Porch Rockers performing at an outdoor event"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section class="music" id="music">
+    <div class="container">
+      <p class="eyebrow">The Setlist</p>
+      <h2 class="title">Songs You Already<br>Know By Heart</h2>
+      <p class="lead">
+        From classic rock and 90s indie gold to pop anthems and timeless singer-songwriter bangers — if it made you turn up the radio, we probably play it.
+      </p>
+      <div class="artist-cloud">
+        <span class="tag tp">The Beatles</span>
+        <span class="tag tg">Indigo Girls</span>
+        <span class="tag ty">Carole King</span>
+        <span class="tag tc">Melissa Etheridge</span>
+        <span class="tag tt">Queen</span>
+        <span class="tag tp">Sheryl Crow</span>
+        <span class="tag tg">Alanis Morissette</span>
+        <span class="tag ty">Tracy Chapman</span>
+        <span class="tag tc">Gnarls Barkley</span>
+        <span class="tag tt">Sarah McLachlan</span>
+        <span class="tag tn">Miley Cyrus</span>
+        <span class="tag tp">Four Non-Blondes</span>
+        <span class="tag ty">Lenny Kravitz</span>
+        <span class="tag tc">Pretenders</span>
+        <span class="tag tt">Dua Lipa</span>
+        <span class="tag tg">10,000 Maniacs</span>
+        <span class="tag tn">Paul Simon</span>
+        <span class="tag tp">Bob Marley</span>
+        <span class="tag ty">Natalie Imbruglia</span>
+        <span class="tag tc">U2</span>
+        <span class="tag tt">Meghan Trainor</span>
+        <span class="tag tg">Edie Brickell</span>
+        <span class="tag tn">Allman Brothers</span>
+        <span class="tag tp">Lisa Loeb</span>
+        <span class="tag ty">Squeeze</span>
+        <span class="tag tc">Liz Phair</span>
+        <span class="tag tt">Annie Lennox</span>
+        <span class="tag tg">Des'Ree</span>
+        <span class="tag tn">B-52s</span>
+        <span class="tag tp">Dusty Springfield</span>
+        <span class="tag ty">Elle King</span>
+        <span class="tag tc">Ringo Starr</span>
+        <span class="tag tt">Maggie Rogers</span>
+        <span class="tag tg">Dobie Gray</span>
+        <span class="tag tn">Badfinger</span>
+        <span class="tag tp">Linda Ronstadt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIRE -->
+  <section class="hire" id="hire">
+    <div class="container">
+      <p class="eyebrow">Book The Porch Rockers</p>
+      <h2 class="title">Seriously.<br>Hire Us.</h2>
+      <p class="lead">
+        We're local, we're fun, and — this is the part we really want you to hear — <strong>we're not expensive.</strong> Whether you're planning a neighborhood block party or your mom's milestone birthday bash, the Porch Rockers are ready to make it a night to remember.
+      </p>
+
+      <div class="hire-cards">
+        <div class="hire-card">
+          <div class="hire-card-icon">🏛️</div>
+          <h3>Civic Events</h3>
+          <p>Town festivals, village days, park concert series, porchfests. We've played them all and keep getting invited back. We take that as a compliment.</p>
+        </div>
+        <div class="hire-card">
+          <div class="hire-card-icon">🥂</div>
+          <h3>Private Parties</h3>
+          <p>Backyard cookouts, anniversary dinners, retirement bashes, graduation parties — if you need live music and good vibes, we're your band. BYOB (Bring Your Own Blanket).</p>
+        </div>
+        <div class="hire-card">
+          <div class="hire-card-icon">🎂</div>
+          <h3>Milestone Birthdays</h3>
+          <p>Turning 50? Someone you love is? We practically specialize in this. Our setlist is calibrated to perfection for people who were alive when these songs were new.</p>
+        </div>
+      </div>
+
+      <div class="price-banner">
+        <div class="price-banner-text">
+          ✓ Surprisingly Affordable &nbsp;&nbsp; ✓ Newton-Based &nbsp;&nbsp; ✓ Guaranteed Good Time
+          <span>We bring our own equipment. You bring the audience. We'll handle the rest.</span>
+        </div>
+        <a href="#contact" class="btn btn-yellow">Get in Touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="eyebrow">In Action</p>
+      <h2 class="title">We Get Around</h2>
+      <div class="photo-grid">
+        <img
+          src="media/image_6487327(1).JPG"
+          alt="Full band at outdoor street show"
+          class="wide"
+        >
+        <img
+          src="media/IMG_6077.jpg"
+          alt="Porch Rockers performing on a porch"
+          class="tall"
+        >
+        <img
+          src="media/image_6487327.JPG"
+          alt="Two vocalists at outdoor show"
+        >
+        <img
+          src="media/IMG_5788.jpeg"
+          alt="Porch Rockers at pavilion"
+        >
+        <img
+          src="media/photo-4617006260486144.jpeg"
+          alt="Indoor party performance"
+        >
+        <img
+          src="media/IMG_8099.jpg"
+          alt="Crowd enjoying a Porch Rockers show"
+        >
+        <img
+          src="media/image_6487327(3).JPG"
+          alt="Vocalists having a great time"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <p class="eyebrow">Live Footage</p>
+      <h2 class="title">Don't Just Take<br>Our Word for It</h2>
+      <p class="lead">Watch us in action. Yes, people dance. Yes, it's this fun every time.</p>
+      <div class="video-grid">
+        <div class="video-wrap">
+          <video controls preload="none" poster="media/poster_8117.jpg">
+            <source src="media/IMG_8117_fade.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="none" poster="media/poster_5797.jpg">
+            <source src="media/IMG_5797_trim.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="none" poster="media/poster_reddit.jpg">
+            <source src="media/reddit_clip.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-wrap">
+          <video controls preload="none" poster="media/poster_9686.jpg">
+            <source src="media/IMG_9686_fade.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIO SECTION -->
+  <section class="audio-section" id="audio">
+    <div class="container">
+      <p class="eyebrow">From Rehearsals and Shows</p>
+      <h2 class="title">Hear Us Live</h2>
+      <p class="lead">A medley of 18 live clips.</p>
+      <div class="audio-player-wrap">
+        <audio controls>
+          <source src="media/porch_rockers_medley.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <p class="audio-note">~7.5 minutes · from rehearsals and shows in Newton, MA</p>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact">
+    <div class="container">
+      <h2 class="title">Let's Make<br>Some Noise</h2>
+      <p class="lead">
+        Ready to book Newton's favorite mom-rock band? (We're also the only mom-rock band in the Boston area, so your search ends here.) Tell us a little about your event and we'll get back to you.
+      </p>
+
+      <form
+        action="https://formsubmit.co/jack.cheng@gmail.com"
+        method="POST"
+        class="contact-form"
+      >
+        <!-- Formsubmit config -->
+        <input type="hidden" name="_cc" value="premily@yahoo.com">
+        <input type="hidden" name="_subject" value="Porch Rockers Booking Inquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.facebook.com/PorchRockers/">
+        <!-- Honeypot spam trap -->
+        <input type="text" name="_honey" style="display:none">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234">
+          </div>
+          <div class="form-group">
+            <label for="event-type">Type of Event</label>
+            <select id="event-type" name="event_type" required>
+              <option value="" disabled selected>Select one…</option>
+              <option>Civic / Community Event</option>
+              <option>Private Party</option>
+              <option>Birthday / Milestone Celebration</option>
+              <option>Backyard Cookout</option>
+              <option>Corporate Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="event-date">Approximate Event Date</label>
+            <input type="text" id="event-date" name="event_date" placeholder="e.g. June 2025, or TBD">
+          </div>
+          <div class="form-group">
+            <label for="location">Event Location / Town</label>
+            <input type="text" id="location" name="location" placeholder="Newton, MA">
+          </div>
+        </div>
+
+        <div class="form-group form-group-full">
+          <label for="message">Tell Us More</label>
+          <textarea id="message" name="message" rows="4" placeholder="How many guests? Indoors or outdoors? Any other details we should know?"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-yellow">Send It Our Way →</button>
+          <p class="form-note">We'll get back to you within a day or two. Promise.</p>
+        </div>
+      </form>
+
+      <div class="footer-also">
+        <p>Also find us on <a href="https://www.facebook.com/PorchRockers/" target="_blank" rel="noopener">Facebook</a></p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 The Porch Rockers &nbsp;·&nbsp; Newton, MA &nbsp;·&nbsp; Mom-Rock Since 2019</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
