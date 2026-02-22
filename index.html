@@ -366,6 +366,23 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
+    .btn-next-clip {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      border-radius: 4px;
+      padding: 0.6rem 1.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-next-clip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
     .audio-note {
       font-size: 0.88rem;
       color: rgba(255,255,255,0.6);
@@ -705,9 +722,12 @@
       <h2 class="title">Hear Us Live</h2>
       <p class="lead">This could be the sound of your party or event.</p>
       <div class="audio-player-wrap">
-        <audio controls>
+        <audio id="medley-player" controls>
           <source src="media/porch_rockers_medley.mp3" type="audio/mpeg">
         </audio>
+        <button class="btn-next-clip" onclick="skipToNextClip()" title="Skip to next clip">
+          ⏭ Next Clip
+        </button>
       </div>
       <p class="audio-note">A sampling of live clips from our shows and rehearsals.</p>
     </div>
@@ -796,5 +816,16 @@
     </div>
   </footer>
 
+  <script>
+    function skipToNextClip() {
+      var audio = document.getElementById('medley-player');
+      var clipLength = 25;
+      var current = audio.currentTime;
+      var nextStart = Math.floor(current / clipLength) * clipLength + clipLength;
+      if (nextStart >= audio.duration) nextStart = 0;
+      audio.currentTime = nextStart;
+      if (audio.paused) audio.play();
+    }
+  </script>
 </body>
 </html>
