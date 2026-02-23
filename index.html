@@ -817,18 +817,27 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 The Porch Rockers &nbsp;·&nbsp; Newton, MA &nbsp;·&nbsp; Rocking moms since 2019</p>
+        <p>© 2026 The Porch Rockers &nbsp;·&nbsp; Newton, MA &nbsp;·&nbsp; Rocking moms since 2019</p>
         <div class="visitor-counter">
-          <img
-            src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmrcrosson.github.io&count_bg=%231a6fa8&title_bg=%23333333&title=visitors&edge_flat=true"
-            alt="Visitor count"
-          >
+          👀 <span id="visit-count">...</span> visitors
         </div>
       </div>
     </div>
   </footer>
 
   <script>
+    // Visitor counter via CountAPI
+    fetch('https://api.countapi.xyz/hit/mrcrosson.github.io/visits')
+      .then(r => r.json())
+      .then(data => {
+        var el = document.getElementById('visit-count');
+        if (el) el.textContent = data.value.toLocaleString();
+      })
+      .catch(() => {
+        var el = document.getElementById('visit-count');
+        if (el) el.parentElement.style.display = 'none';
+      });
+
     function skipToNextClip() {
       var audio = document.getElementById('medley-player');
       var clipLength = 25;
