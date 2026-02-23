@@ -340,11 +340,39 @@
     }
     footer h2.title { color: var(--yellow); }
     footer .lead { color: rgba(255,255,255,0.65); margin: 1.2rem auto 2.5rem; }
+    .moms-trigger {
+      position: relative;
+      cursor: default;
+    }
     .visitor-counter {
-      margin-top: 1.2rem;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 0.05em;
+      display: block;
+      position: absolute;
+      bottom: 1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .visitor-counter::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--yellow);
+    }
+    .moms-trigger:hover .visitor-counter {
+      opacity: 1;
     }
     .footer-bottom {
       margin-top: 5rem;
@@ -818,10 +846,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 The Porch Rockers &nbsp;·&nbsp; Newton, MA &nbsp;·&nbsp; Rocking moms since 2019</p>
-        <div class="visitor-counter">
-          👀 <span id="visit-count">...</span> visitors
-        </div>
+        <p>© 2026 The Porch Rockers &nbsp;·&nbsp; Newton, MA &nbsp;·&nbsp; Rocking <span class="moms-trigger">moms<span class="visitor-counter">👀 <span id="visit-count">...</span> visitors</span></span> since 2019</p>
       </div>
     </div>
   </footer>
