@@ -852,12 +852,12 @@
   </footer>
 
   <script>
-    // Visitor counter via CountAPI
-    fetch('https://api.countapi.xyz/hit/mrcrosson.github.io/visits')
+    // Visitor counter via counterapi.dev
+    fetch('https://api.counterapi.dev/v1/mrcrosson-github-io/visits/up')
       .then(r => r.json())
       .then(data => {
         var el = document.getElementById('visit-count');
-        if (el) el.textContent = data.value.toLocaleString();
+        if (el) el.textContent = data.count.toLocaleString();
       })
       .catch(() => {
         var el = document.getElementById('visit-count');
